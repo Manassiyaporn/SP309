@@ -1,3 +1,2 @@
 # Module thome
 # RPC service class, partial path of RPC policy file
-com.ac.utcc.client.GreetingService, 2DBAEF3D336C1289625CCB820560B73A.gwt.rpc
