@@ -8,39 +8,22 @@
 <title>login</title>
 </head>
 <body>
+<!-- ฟังก์ชันการล็อกอิน -->
 	<h1>Login</h1>
 	<%
-	Enumeration paramNames = request.getParameterNames();
-	
 	String aUser = request.getParameter("username");
 	String aPassword = request.getParameter("password");
 	String admUsername = "admin";
 	String admPassword = "1234";
 	
-	session.setAttribute("username", aUser);
-	session.setAttribute("password", aPassword);
-	session.setAttribute("adminUsername", admUsername);
-	session.setAttribute("adminPassword", admPassword);
-	
-	String strUser = String.valueOf(session.getAttribute("aUser"));
-	String strPass = String.valueOf(session.getAttribute("aPassword"));
-	String adUser = String.valueOf(session.getAttribute("admUsername"));
-	String adPass = String.valueOf(session.getAttribute("admPassword"));
-	
-	if(aUser.equals(admUsername)){
-			out.println(aUser);
-		if(aPassword.equals(admPassword)){
-			out.println(aPassword);
-		}else{
-			out.println("Wrong password.");
-		}
+	//ตรวจสอบ username และ password
+	if(aUser.equals(admUsername) && aPassword.equals(admPassword)){
+		session.setAttribute("username", admUsername);
+		response.sendRedirect("index.jsp");	
 	}else{
-		out.println("ไม่มี Username ในระบบ");
+		out.println("Please check your username or password again!!! <br>");
+		out.println("<input type=\"button\" value=\"back\" onClick=\"JavaScript:self.location.href='login.html'\">");
 	}
 %>
-	<p>
-		<b>Username</b>:<%=aUser%><br> <b>Password </b>:<%=aPassword%><br>
-		<a href=""><input type="button" value="back"></a>
-	</p>
 </body>
 </html>
